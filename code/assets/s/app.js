@@ -39,7 +39,7 @@ var scatterGroup = svg.append("g")
 //import data from csv
 d3.csv("../assets/data/data.csv").then(function(stateData) {
     console.log(stateData[8])
-    console.log('hed')
+    console.log('heji')
     
 
     stateData.forEach(function(data) {
@@ -70,8 +70,6 @@ d3.csv("../assets/data/data.csv").then(function(stateData) {
     scatterGroup.append("g")
         .call(leftAxis);
 
-    
-    
     //create plot point group
     var pointGroup = scatterGroup.selectAll("circle")
     .data(stateData)
@@ -83,7 +81,7 @@ d3.csv("../assets/data/data.csv").then(function(stateData) {
     .attr("fill", "purple")  
     .attr('opacity', '1')
 
-    var textGroup = scatterGroup.selectAll("text")
+    scatterGroup.selectAll("text")
     .data(stateData)
     .enter()
     .append('text')
