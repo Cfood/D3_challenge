@@ -45,6 +45,8 @@ d3.csv("../assets/data/data.csv").then(function(stateData) {
     stateData.forEach(function(data) {
         data.smokes = +data.smokes
         data.age = +data.age
+        data.obesity = + data.obesity
+        data.healthcare = +data.healthcare
     })
 
     //create  x and y scale functions
@@ -78,13 +80,12 @@ d3.csv("../assets/data/data.csv").then(function(stateData) {
     .attr("r", "10")
     .attr("fill", "purple")  
     .attr('opacity', '1')
-    .text(d=> d.abbr)
 
     
-    var text = scatterGroup.selectAll("text")
+    scatterGroup.selectAll("text")
     .data(stateData)
     .enter()
-    .append('text')
+    .append('g')
     .text(d=> d.abbr)
     .attr("x", d => xScale(d.age))
     .attr("y", d=> yScale(d.smokes)+5)
@@ -92,8 +93,7 @@ d3.csv("../assets/data/data.csv").then(function(stateData) {
     .style("font-size", "12px")
     .style('fill','#FFFFFF')
 
-    console.log(stateData)
-    
+
 
 })
 
